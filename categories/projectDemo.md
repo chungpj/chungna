@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Project Demo
+title: Knowledge
 permalink: /blog/categories/projectdemo/
 ---
 
@@ -8,6 +8,6 @@ permalink: /blog/categories/projectdemo/
 
 <div class="card">
 {% for post in site.categories.projectDemo %}
- <li class="category-posts"><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
+ <li class="category-posts"><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="/info/{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </div>
