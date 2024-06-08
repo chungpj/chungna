@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Project Demo
+title: Knowledge
 permalink: /blog/categories/knowledge/
 ---
 
