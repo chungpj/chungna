@@ -27,29 +27,38 @@ summary: Tạo và import một oracle database
 #### Chi tiết:
 
 - Mở Sql Plus
+
   - Mở trực tiếp sqlplus.exe
+
     ```sql
     Nhập username, password để sử dụng <user>/<pass>
     Hoặc dùng sysdba với command ./sys as sysdba
     ```
+
   - Thông qua cmd administrator
+
     ```sql
     sqlplus / AS SYSDBA
     ---- chú ý thay đổi pass và Alias
     Hoặc sqlplus sys/<pass>@localhost/<YOUR_ALIAS> as sysdba
     ```
+
 - CREATE `DUMP_DIR` (Folder chứa các file .dump):
+
   ```sql
   ---- CREATE DUMP_DIR (Folder chứa các file .dump) (Run sqlplus ./sys sysdba) ----------
   CREATE OR REPLACE DIRECTORY DUMP_DIR AS 'E:\PW_DUMP';
   ```
+
 - Create `User` & `TableSpace`:
+
   ```sql
   ---- CREATE USER & TABLESPACE (Run sqlplus ./sys sysdba) ----------
   // USER = PASS = XXX, chỉnh size khởi tạo phù hợp để tránh lãng phí ổ cứng
   CREATE TABLESPACE XXX DATAFILE 'E:\Databases\XXX.dbf' SIZE 500M AUTOEXTEND ON NEXT 50M;
   CREATE TEMPORARY TABLESPACE TMPXXX TEMPFILE 'E:\Databases\TMPXXX.dbf' SIZE 100M AUTOEXTEND ON NEXT 10M;
   ```
+
 - `GRANT` quyền cho các `User` vừa tạo và gắn vào `TableSpace`:
 
   ```sql
@@ -82,12 +91,14 @@ summary: Tạo và import một oracle database
   ```
 
 - Export dump (bạn có db và muốn export ra file .dump):
+
   ```sql
   ---- EXPORT DB (Run sqlplus ./sys sysdba) ----------
   GRANT DATAPUMP_EXP_FULL_DATABASE to XXX;
   expdp XXX/XXX@localhost:1521/<YOUR_ALIAS> directory=DUMP_DIR dumpfile=exp_XXX.dmp;
   expdp XXX/XXX@localhost:1523/<YOUR_ALIAS> full=y directory=DUMP_DIR dumpfile=exp_xxx.dmp;
   ```
+
 - Import .dump file (Run `cmd` administrator or impdp.exe): (lựa chọn một trong số các commands dưới đây)
 
   ```sql
@@ -110,4 +121,4 @@ summary: Tạo và import một oracle database
 - `Temporary`: Cũng là vùng chứa data nhưng là data temp khi bạn thực hiện query, order, group..
 - `Datafile`: File vật lý của database
 
-**Note: Copy toàn bộ command của tôi vào notepad++ rồi thực hiện Replace XXX -> <Tên DB của bạn>**
+**Note:** Copy toàn bộ command của tôi vào notepad++ rồi thực hiện Replace XXX-><Tên DB của bạn>

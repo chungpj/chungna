@@ -8,7 +8,7 @@ gh-badge: [follow]
 tags: [knowledge, oracle, casestudy]
 comments: true
 #date: '2024-05-26 14:35:23 +0530'
-category: knowledge, casestudy
+category: knowledge
 #thumbnail: /assets/img/posts/code.jpg
 keywords: import dump with multiple oracle version
 permalink: /blog/Import-dump-in-case-of-multiple-oracle-versions/
@@ -24,7 +24,7 @@ summary: Nếu trên máy server của bạn có nhiều hơn 1 phiên bản ora
 impdp <user>/<pass>
 ```
 
-- Trường hợp này, cách an toàn nhất là sử dụng file dump của từng phiên bản theo đúng đường dẫn, nên cần phải nắm được chính xác vị trí cài đặt từng phiên bản oracle đã cài.
+- Trường hợp trên máy server của bạn có nhiều hơn 1 phiên bản oracle, cách an toàn nhất là sử dụng file dump của từng phiên bản theo đúng đường dẫn, nên cần phải nắm được chính xác vị trí cài đặt từng phiên bản oracle đã cài.
 - Các bước thực hiện:
   - B1: Tìm folder chứa file `impdp.exe` hay `imp.exe`, thông thường folder cấp nhỏ nhất sẽ là `app`. Ví dụ:
     ```csharp
@@ -32,10 +32,10 @@ impdp <user>/<pass>
     ```
   - B2: Có thể làm 2 cách:
     ```csharp
-    \\ Mở cmd với quyền Administrator
-    \\ sử dụng lệnh cd vào C:\app\virtual\product\12.2.0\dbhome_1\bin
+    Mở cmd với quyền Administrator
+    sử dụng lệnh cd vào C:\app\virtual\product\12.2.0\dbhome_1\bin
     ```
     ```csharp
-    \\ Nhấn [Shift] + chuột phải -> chọn Open PowerShell window here
+    Nhấn [Shift] + chuột phải -> chọn Open PowerShell window here
     ```
   - B3: Nhập câu lệnh import và run
